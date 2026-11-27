@@ -421,87 +421,38 @@
       margin-top: 0.45rem;
       color: var(--body);
     }
-    .character-links {
+    .spotlight-shop { margin-top: 0.65rem; }
+    .character-gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.55rem;
-      margin: 0.8rem 0;
-      padding: 0;
-      list-style: none;
+      gap: clamp(0.42rem, 1.4vw, 0.8rem);
     }
-    .character-links a {
+    .character-art {
       display: grid;
-      gap: 0.08rem;
-      height: 100%;
-      padding: 0.54rem 0.68rem;
-      border: 1px solid #e4bd4c;
-      border-radius: 0.65rem;
-      background: #fff0ac;
+      grid-template-rows: 1fr auto;
+      justify-items: center;
+      gap: 0.4rem;
+      min-width: 0;
+      margin: 0;
+      padding: clamp(0.45rem, 1.4vw, 0.95rem);
+      border: 1px solid #e8cb68;
+      border-radius: 0.75rem;
+      background: radial-gradient(ellipse at 50% 37%, #fffdf2, #fff1ad);
+      text-align: center;
       color: var(--gold-ink);
-      text-decoration: none;
-      overflow-wrap: anywhere;
     }
-    .character-links a:hover strong { text-decoration: underline; }
-    .character-links .ice-link {
-      background: #e2f3ff;
+    .character-art + .character-art {
       border-color: #acd0ec;
+      background: radial-gradient(ellipse at 50% 37%, #fbfeff, #d9efff);
       color: #205682;
     }
-    .character-links .reference-label {
-      font-size: 0.875rem;
-      font-weight: 550;
-    }
-    .video-card {
-      display: grid;
-      gap: 0.58rem;
-      padding: 0.6rem;
-      border: 1px solid #bbd9ef;
-      border-radius: 0.75rem;
-      background: var(--surface);
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .video-poster {
-      position: relative;
-      display: grid;
-      place-items: center;
-      aspect-ratio: 16 / 9;
-      border-radius: 0.48rem;
-      background: #173153;
-      overflow: hidden;
-    }
-    .video-poster img {
-      position: absolute;
-      inset: 0;
+    .character-art img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: clamp(6.25rem, 15vw, 10.5rem);
+      object-fit: contain;
     }
-    .play-icon {
-      position: absolute;
-      z-index: 1;
-      right: 0.55rem;
-      bottom: 0.55rem;
-      display: grid;
-      place-items: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding-left: 0.16rem;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      background: #172e50e8;
-      color: #fff;
-      font-size: 1.05rem;
-    }
-    .video-card:hover strong { text-decoration: underline; }
-    .video-caption {
-      display: grid;
-      padding: 0 0.2rem 0.15rem;
-    }
-    .video-caption span {
-      color: var(--body);
-      font-size: 0.875rem;
-    }
+    .character-art figcaption { font-weight: 760; }
 
     @media (max-width: 60rem) {
       .day-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -540,7 +491,7 @@
     @media print {
       body { background: white; }
       .wrap { width: 100%; }
-      .site-header, .skip, .day-list, .cover-art, .cover-link, .video-card { display: none; }
+      .site-header, .skip, .day-list, .cover-art, .cover-link { display: none; }
       .cover {
         display: block;
         min-height: 0;
@@ -566,6 +517,8 @@
       .day-details { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.25fr); }
       .drive { grid-column: auto; }
       .spotlight { display: block; }
+      .character-gallery { margin-top: 0.6rem; }
+      .character-art img { height: 4.5rem; }
     }
   </style>
 </head>
@@ -950,19 +903,18 @@
           <div>
             <h4 id="sapporo-pokemon-title">札幌寶可夢中心</h4>
             <p class="spotlight-location">大丸札幌店 8 樓，JR 札幌站直通。阿羅拉六尾也是<a href="https://local.pokemon.jp/en/municipality/hokkaido/">北海道的應援角色</a>。</p>
-            <ul class="character-links" aria-label="官方角色圖鑑">
-              <li><a href="https://tw.portal-pokemon.com/pokedex/0025/"><strong>皮卡丘</strong><span class="reference-label">電屬性 · 官方圖鑑</span></a></li>
-              <li><a class="ice-link" href="https://tw.portal-pokemon.com/pokedex/0037_1/"><strong>阿羅拉六尾</strong><span class="reference-label">冰屬性 · 官方圖鑑</span></a></li>
-            </ul>
-            <a class="text-link" href="https://shop.pokemon.co.jp/ja/shop/pokemoncenter-sapporo/">查看店鋪資訊</a>
+            <p class="spotlight-shop"><a class="text-link" href="https://shop.pokemon.co.jp/ja/shop/pokemoncenter-sapporo/">查看店鋪資訊</a></p>
           </div>
-          <a class="video-card" href="https://www.youtube.com/watch?v=FkYH2UTDHEQ&amp;t=446s">
-            <span class="video-poster">
-              <img src="https://i.ytimg.com/vi/FkYH2UTDHEQ/hqdefault.jpg" width="480" height="360" loading="lazy" referrerpolicy="no-referrer" alt="">
-              <span class="play-icon" aria-hidden="true">▶</span>
-            </span>
-            <span class="video-caption"><strong>皮卡丘與阿羅拉六尾在札幌</strong><span>寶可夢官方音樂會影片 · YouTube</span></span>
-          </a>
+          <div class="character-gallery">
+            <figure class="character-art">
+              <img src="pikachu.png" width="1253" height="1193" loading="lazy" decoding="async" alt="黃色的皮卡丘，尾巴形似閃電">
+              <figcaption>皮卡丘</figcaption>
+            </figure>
+            <figure class="character-art">
+              <img src="alolan-vulpix.png" width="2015" height="2089" loading="lazy" decoding="async" alt="白色與冰藍色的阿羅拉六尾">
+              <figcaption>阿羅拉六尾</figcaption>
+            </figure>
+          </div>
         </section>
         <div class="stay">
           <h4>當晚住宿</h4>
